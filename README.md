@@ -13,7 +13,7 @@
   ![a](https://f6-zpcloud.zdn.vn/1882980544622913807/e86da2852851e70fbe40.jpg)
   - Student Detail Page: The page to display the detail information such as name, age, course, and avarta specific for each student by their routes. The edit function to edit
   student information.
-  ![a](https://f6-zpcloud.zdn.vn/5879226046992613692/e6ad0375a3a16cff35b0.jpg)
+  ![a](https://f6-zpcloud.zdn.vn/1708891007449573691/c34daceb793fb661ef2e.jpg)
 ### How to run:
 - Backend: `npm start`
 - Frontend: 
