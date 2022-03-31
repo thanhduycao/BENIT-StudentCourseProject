@@ -28,7 +28,6 @@ export default function CoursePage() {
 
     //Add Student
     const addCourse = async (course) => {
-        console.log({ course });
         setCourses([...courses, course]);
         const res = await fetch('http://localhost:3001/courses', {
             method: 'POST',
@@ -37,8 +36,10 @@ export default function CoursePage() {
             },
             body: JSON.stringify(course)
         })
-
-        await fetchCourses();
+        console.log({ courses });
+        let coursesT = await fetchCourses();
+        console.log({ coursesT })
+        setCourses(coursesT)
         res.status === 200 ? alert("Adding course successfully") : alert("Error while adding");
         setShowAddCourse(false)
     }
