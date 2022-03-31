@@ -58,28 +58,28 @@ export default function CoursePage() {
 
     //Update course
     const updateCourse = async (id, course) => {
-        function editCourse(id, course, array) {
-            let courseToEdit = array.find((course) => (course.id).toString() === id.toString())
+        let courseToUpdate = courses.find((course) => (course.id).toString() === id);
+        console.log(courseToUpdate);
+        courseToUpdate.courseName = course.courseName;
+        courseToUpdate.text = course.text;
 
-            course = JSON.parse(course);
-            courseToEdit.courseName = course.courseName;
-            courseToEdit.text = course.text;
-        }
-
+        console.log(courseToUpdate);
+        console.log({ courses })
+        setCourses(courses);
         const res = await fetch(`http://localhost:3001/courses/${id}`, {
             // mode: "no-cors",
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: course
+            body: JSON.stringify(course)
         })
 
         await fetchCourses();
 
         res.status === 200
-            ? editCourse(id, course, ...courses)
-            : alert('Error Updating This Student')
+            ? alert("Update course successfully")
+            : alert('Error Updating')
 
         const data = await res.json()
         console.log(data)

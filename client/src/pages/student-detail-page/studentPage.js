@@ -66,11 +66,12 @@ export default function StudentPage() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: student
+            body: JSON.stringify(student)
         })
-
-        const data = await res.json()
-        console.log(data)
+        res.status === 200 ? alert("Edit student successfully") : alert("Error edditing student");
+        setStudent(student);
+        setShowEdit(false);
+        await fetchStudents();
     }
 
     console.log(student.courses)
@@ -112,7 +113,7 @@ export default function StudentPage() {
                                 onClick={() => setShowEdit(!showEdit)}
                             />
                         </Grid>
-                        {showEdit && <AddOrEditStudent availableCourse={student.courses} inforEditStudent={student} isAdd={false} updateId={id} />}
+                        {showEdit && <AddOrEditStudent availableCourse={student.courses} inforEditStudent={student} isAdd={false} updateId={id} onUpdate={updateStudent} />}
                     </Grid>
                 </Grid>
             </div>

@@ -32,8 +32,8 @@ exports.deleteStudent = (req, res, next) => {
 };
 
 exports.updateStudent = (req, res) => {
-    const student = listStudent.find((student) => student.id == req.params.id);
-
+    let student = listStudent.find((student) => student.id == req.params.id);
+    console.log(student);
     student.studentName = req.body.studentName;
     student.age = req.body.age;
     student.courses = req.body.courses;

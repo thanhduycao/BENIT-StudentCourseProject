@@ -17,7 +17,7 @@ const AddOrEditCourse = ({ isAdd = true, updateId, onAdd, onUpdate }) => {
         if (isAdd)
             onAdd(course)
         else {
-            onUpdate(updateId.toString(), JSON.stringify(course))
+            onUpdate(updateId.toString(), course)
         }
 
         setName('')

@@ -30,7 +30,7 @@ exports.deleteCourse = (req, res, next) => {
 
 exports.updateCourse = (req, res) => {
     console.log("hello");
-    const course = listCourse.find((student) => (student.id).toString() === req.params.id);
+    const course = listCourse.find((course) => (course.id).toString() === req.params.id);
 
     course.courseName = req.body.courseName;
     course.text = req.body.text;
