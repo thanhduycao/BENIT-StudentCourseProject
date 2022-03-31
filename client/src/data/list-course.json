@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "courseName": "Math",
+        "text": "Math is fun"
+    },
+    {
+        "id": 2,
+        "courseName": "Physics",
+        "text": "To know how the world works"
+    }
+]
