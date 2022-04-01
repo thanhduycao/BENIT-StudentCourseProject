@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export default function StudentPage() {
     const classes = useStyles();
     const [student, setStudent] = useState({});
+    const [courses, setCourses] = useState([]);
     const { id } = useParams();
     const [showEdit, setShowEdit] = useState(false);
     useEffect(() => {
@@ -49,11 +50,27 @@ export default function StudentPage() {
         } catch (error) {
             console.log(error)
         }
+        const getCourses = async () => {
+            const coursesFromServer = await fetchCourses();
+            let listCourseName = [];
+            coursesFromServer.map((course) => (
+                listCourseName.push(course.courseName)
+            ));
+            setCourses(listCourseName);
+        }
+        getCourses();
     }, [])
 
     //fetch Students
     const fetchStudents = async (id) => {
         const res = await fetch(`http://localhost:3001/students/${id}`);
+        const data = await res.json();
+
+        return data;
+    }
+
+    const fetchCourses = async () => {
+        const res = await fetch('http://localhost:3001/courses');
         const data = await res.json();
 
         return data;
@@ -113,7 +130,7 @@ export default function StudentPage() {
                                 onClick={() => setShowEdit(!showEdit)}
                             />
                         </Grid>
-                        {showEdit && <AddOrEditStudent availableCourse={student.courses} inforEditStudent={student} isAdd={false} updateId={id} onUpdate={updateStudent} />}
+                        {showEdit && <AddOrEditStudent availableCourse={courses} inforEditStudent={student} isAdd={false} updateId={id} onUpdate={updateStudent} />}
                     </Grid>
                 </Grid>
             </div>
